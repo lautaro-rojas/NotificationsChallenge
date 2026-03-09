@@ -1,0 +1,6 @@
+@NotificationsChallenge.WebApi_HostAddress = http://localhost:5104
+
+GET {{NotificationsChallenge.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

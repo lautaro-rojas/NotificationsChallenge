@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/NotificationsChallenge.Application/NotificationsChallenge.Application.csproj" />
+    <Project Path="src/NotificationsChallenge.Domain/NotificationsChallenge.Domain.csproj" />
+    <Project Path="src/NotificationsChallenge.Infrastructure/NotificationsChallenge.Infrastructure.csproj" />
+    <Project Path="src/NotificationsChallenge.WebApi/NotificationsChallenge.WebApi.csproj" />
+  </Folder>
+</Solution>
