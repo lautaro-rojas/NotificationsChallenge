@@ -1,0 +1,59 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Lauta\\OneDrive\\Desktop\\ReposGitHub\\NotificationsChallenge\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BB75B7EF-AC48-BBBD-BB6D-517A51F162D6}|src\\NotificationsChallenge.WebApi\\NotificationsChallenge.WebApi.csproj|c:\\users\\lauta\\onedrive\\desktop\\reposgithub\\notificationschallenge\\src\\notificationschallenge.webapi\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB75B7EF-AC48-BBBD-BB6D-517A51F162D6}|src\\NotificationsChallenge.WebApi\\NotificationsChallenge.WebApi.csproj|solutionrelative:src\\notificationschallenge.webapi\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AF783959-0634-C4DF-8B73-E39900FB809D}|src\\NotificationsChallenge.Application\\NotificationsChallenge.Application.csproj|c:\\users\\lauta\\onedrive\\desktop\\reposgithub\\notificationschallenge\\src\\notificationschallenge.application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF783959-0634-C4DF-8B73-E39900FB809D}|src\\NotificationsChallenge.Application\\NotificationsChallenge.Application.csproj|solutionrelative:src\\notificationschallenge.application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\Lauta\\OneDrive\\Desktop\\ReposGitHub\\NotificationsChallenge\\src\\NotificationsChallenge.WebApi\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "src\\NotificationsChallenge.WebApi\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\Lauta\\OneDrive\\Desktop\\ReposGitHub\\NotificationsChallenge\\src\\NotificationsChallenge.WebApi\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "src\\NotificationsChallenge.WebApi\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-28T14:34:27.918Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\Lauta\\OneDrive\\Desktop\\ReposGitHub\\NotificationsChallenge\\src\\NotificationsChallenge.Application\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "src\\NotificationsChallenge.Application\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\Lauta\\OneDrive\\Desktop\\ReposGitHub\\NotificationsChallenge\\src\\NotificationsChallenge.Application\\Services\\UserService.cs",
+              "RelativeToolTip": "src\\NotificationsChallenge.Application\\Services\\UserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-28T15:04:51.106Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

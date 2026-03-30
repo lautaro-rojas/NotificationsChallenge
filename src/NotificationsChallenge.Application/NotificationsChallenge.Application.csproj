@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NotificationsChallenge.Domain\NotificationsChallenge.Domain.csproj" />
+    <ProjectReference Include="..\NotificationsChallenge.Infrastructure\NotificationsChallenge.Infrastructure.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

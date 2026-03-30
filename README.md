@@ -6,3 +6,8 @@ Notification management system for authenticated users.  The system allows each 
 - ASP.NET Core WebAPi
 - Swagger
 - Docker
+- JWT
+- Entity Framework 
+- Clean Architecture
+
+
