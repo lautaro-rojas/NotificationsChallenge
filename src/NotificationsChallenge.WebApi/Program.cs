@@ -1,6 +1,8 @@
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi;
+using Scalar.AspNetCore;
 using NotificationsChallenge.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,14 +10,56 @@ var builder = WebApplication.CreateBuilder(args);
 // Controllers
 builder.Services.AddControllers();
 
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+#region OpenAPI + Scalar
+// dotnet add package Microsoft.OpenApi
+// dotnet add package Scalar.AspNetCore
+builder.Services.AddOpenApi(options =>
+{
+    // 1. Registramos el esquema "Bearer" en el diccionario del documento global
+    options.AddDocumentTransformer((document, context, cancellationToken) =>
+    {
+        var bearerScheme = new OpenApiSecurityScheme
+        {
+            Type = SecuritySchemeType.Http,
+            Scheme = "bearer",
+            In = ParameterLocation.Header,
+            BearerFormat = "JWT"
+        };
 
-// Swagger
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+        document.Components ??= new OpenApiComponents();
+        document.AddComponent("Bearer", bearerScheme);
 
-// JWT
+        return Task.CompletedTask;
+    });
+
+    // 2. Filtramos endpoint por endpoint (Operación por Operación)
+    options.AddOperationTransformer((operation, context, cancellationToken) =>
+    {
+        // Obtenemos los atributos que le pusiste al endpoint (ej: [Authorize], [AllowAnonymous])
+        var metadata = context.Description.ActionDescriptor.EndpointMetadata;
+        
+        var hasAuthorize = metadata.OfType<Microsoft.AspNetCore.Authorization.IAuthorizeData>().Any();
+        var hasAllowAnonymous = metadata.OfType<Microsoft.AspNetCore.Authorization.IAllowAnonymous>().Any();
+
+        // Si el endpoint tiene [Authorize] y NO tiene [AllowAnonymous]...
+        if (hasAuthorize && !hasAllowAnonymous)
+        {
+            // ...entonces sí le agregamos el requisito de seguridad (el candado)
+            var securityRequirement = new OpenApiSecurityRequirement
+            {
+                [new OpenApiSecuritySchemeReference("Bearer", context.Document)] = []
+            };
+
+            operation.Security ??= new List<OpenApiSecurityRequirement>();
+            operation.Security.Add(securityRequirement);
+        }
+
+        return Task.CompletedTask;
+    });
+});
+#endregion
+
+#region JWT
 builder.Services.AddAuthorization();
 var secretKey = builder.Configuration["JwtSecretKey"]!;
 if (string.IsNullOrWhiteSpace(secretKey) || secretKey.Length < 32)
@@ -37,10 +81,12 @@ builder.Services.AddAuthentication("Bearer").AddJwtBearer(options =>
         options.TokenValidationParameters.IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
         options.TokenValidationParameters.ClockSkew = TimeSpan.Zero;
     });
+#endregion
 
-// BD
+#region Database Context
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+#endregion
 
 // Services
 builder.Services.AddScoped<NotificationsChallenge.Application.Services.UserService>();
@@ -52,13 +98,10 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
-    app.UseSwagger();
-    app.UseSwaggerUI(options =>
-    {
-        // Configure swagger to shwow the ui in the root of the application
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "NotificationsChallenge v1");
-        options.RoutePrefix = string.Empty;
-    });
+    app.MapScalarApiReference();
+
+    app.MapGet("/", () => Results.Redirect("/scalar/v1"))
+       .ExcludeFromDescription();
 }
 
 // Configure the HTTP request pipeline.
