@@ -18,6 +18,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 // Services
 builder.Services.AddScoped<NotificationsChallenge.Application.Services.UserService>();
+builder.Services.AddScoped<NotificationsChallenge.Application.Services.AuthService>();
+builder.Services.AddScoped<NotificationsChallenge.Application.Services.JwtService>();
 
 var app = builder.Build();
 
@@ -38,6 +40,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.UseRouting();
 app.UseHttpsRedirection();
+
 app.MapControllers();
 
 app.Run(); 

@@ -5,11 +5,10 @@ namespace NotificationsChallenge.Domain.DTOs
     public class UserUpdateDto
     {
         // Este objeto se usa SOLO para recibir datos de "afuera" cuando queremos ACTUALIZAR un usuario.
-        // Aquí no pedimos ID (es autogenerado) ni FechaAlta.
-        
-        [Required(ErrorMessage = "Name is required")]
-        public int Id { get; set; }
 
+        [Required(ErrorMessage = "Id is required")]    
+        public int Id { get; set; }
+        
         [Required(ErrorMessage = "Name is required")]
         public string Name { get; set; } = string.Empty;
 

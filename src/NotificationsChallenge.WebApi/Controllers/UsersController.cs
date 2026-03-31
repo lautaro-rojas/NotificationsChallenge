@@ -10,11 +10,10 @@ namespace NotificationsChallenge.WebApi.Controllers
     [ApiController]
     [Route("api/[controller]")]
     // [Authorize] // Protect all endpoints in this controller with JWT authentication
-    public class UsersController : Controller
+    public class UsersController : ControllerBase
     {
         private readonly UserService _userService;
 
-        // Dependency Injection: The constructor requests the service
         public UsersController(UserService userService)
         {
             _userService = userService;
@@ -104,7 +103,7 @@ namespace NotificationsChallenge.WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> UserUpdate(int id, [FromBody] UserUpdateDto userUpdateDto)
+        public async Task<IActionResult> UserUpdate([FromRoute] int id, [FromBody] UserUpdateDto userUpdateDto)
         {
             if (id != userUpdateDto.Id)
             {
