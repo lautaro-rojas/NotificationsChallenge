@@ -2,14 +2,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using NotificationsChallenge.Application.Models;
 using NotificationsChallenge.Domain.DTOs;
-using NotificationsChallenge.Domain.Interfaces;
 using NotificationsChallenge.Application.Services;
 
 namespace NotificationsChallenge.WebApi.Controllers
 {   
     [ApiController]
     [Route("api/[controller]")]
-    // [Authorize] // Protect all endpoints in this controller with JWT authentication
+    [Authorize] // Protect all endpoints in this controller with JWT authentication
     public class UsersController : ControllerBase
     {
         private readonly UserService _userService;
